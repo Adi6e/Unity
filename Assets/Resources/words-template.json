@@ -1,0 +1,81 @@
+{
+    "words": [
+        {
+            "Id": "red_en",
+            "Language": "en",
+            "TextSeq": "red",
+            "Points": 3,
+            "PrefabName": "red"
+        },
+        {
+            "Id": "red_ru",
+            "Language": "ru",
+            "TextSeq": "красный",
+            "Points": 7,
+            "PrefabName": "red"
+        },
+        {
+            "Id": "green_en",
+            "Language": "en",
+            "TextSeq": "green",
+            "Points": 5,
+            "PrefabName": "green"
+        },
+        {
+            "Id": "green_ru",
+            "Language": "ru",
+            "TextSeq": "зелёный",
+            "Points": 7,
+            "PrefabName": "green"
+        },
+        {
+            "Id": "blue_en",
+            "Language": "en",
+            "TextSeq": "blue",
+            "Points": 4,
+            "PrefabName": "blue"
+        },
+        {
+            "Id": "blue_ru",
+            "Language": "ru",
+            "TextSeq": "синий",
+            "Points": 5,
+            "PrefabName": "blue"
+        },
+        {
+            "Id": "yellow_en",
+            "Language": "en",
+            "TextSeq": "yellow",
+            "Points": 6,
+            "PrefabName": "yellow"
+        },
+        {
+            "Id": "yellow_ru",
+            "Language": "ru",
+            "TextSeq": "желтый",
+            "Points": 6,
+            "PrefabName": "yellow"
+        },
+        {
+            "Id": "purple_en",
+            "Language": "en",
+            "TextSeq": "purple",
+            "Points": 6,
+            "PrefabName": "purple"
+        },
+        {
+            "Id": "cyan_en",
+            "Language": "en",
+            "TextSeq": "cyan",
+            "Points": 4,
+            "PrefabName": "cyan"
+        },
+        {
+            "Id": "magenta_en",
+            "Language": "en",
+            "TextSeq": "magenta",
+            "Points": 7,
+            "PrefabName": "magenta"
+        }
+    ]
+}

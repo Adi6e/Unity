@@ -1,0 +1,25 @@
+{
+    "words": [
+        {
+            "Id": "shovel_en",
+            "Language": "en",
+            "TextSeq": "shovel",
+            "Points": 60,
+            "PrefabName": "shovel"
+        },
+        {
+            "Id": "house_en",
+            "Language": "en",
+            "TextSeq": "house",
+            "Points": 50,
+            "PrefabName": "house"
+        },
+        {
+            "Id": "flower_en",
+            "Language": "en",
+            "TextSeq": "flower",
+            "Points": 60,
+            "PrefabName": "flower"
+        }
+    ]
+}
