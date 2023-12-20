@@ -1,1 +1,30 @@
 
+# Macro for Unity YAML-based asset files.
+[attr]unityyaml -text merge=unityyamlmerge diff
+ 
+# Macro for all binary files that should use Git LFS.
+[attr]lfs -text filter=lfs diff=lfs merge=lfs
+ 
+# Default to auto-normalized line endings.
+* text=auto
+ 
+# Code
+*.cs text diff=csharp
+ 
+# Unity Text Assets
+*.meta unityyaml
+*.mat unityyaml
+*.prefab unityyaml
+*.unity unityyaml
+*.asset unityyaml
+*.anim unityyaml
+
+# Image
+*.png lfs
+
+# Audio
+*.mp3 lfs
+*.wav lfs
+
+# Executables
+*.apk lfs
