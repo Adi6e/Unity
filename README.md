@@ -14,7 +14,8 @@
 
 ---
 # Где скачать?
-Ссылка на рабочий билд (apk-файл): ![WordyBu](https://drive.google.com/file/d/15g8qcvCI2G1R1K4WpUguF-67hvGCpBla/view?usp=drive_link)
+Ссылка на рабочий билд (apk-файл):
+- [WordyBu](https://drive.google.com/file/d/15g8qcvCI2G1R1K4WpUguF-67hvGCpBla/view?usp=drive_link)
  
 ---
 # Как установить?
