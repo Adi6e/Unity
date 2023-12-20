@@ -83,9 +83,9 @@ public class FieldsGenerator : MonoBehaviour {
         string currentWord = currentItem.TextSeq;
         int wordLength = currentWord.Length;
         _wordPoints = currentItem.Points;
-
-        float positionDelta = 0.3f;
-        float letterSize = 3f / wordLength;
+        
+        float positionDelta = 0.1f;
+        float letterSize = 3.3f / wordLength;
         float initPosX = -((int)(wordLength / 2 - (1 - wordLength % 2)) * (letterSize + positionDelta) + (1 - wordLength % 2) * (letterSize + positionDelta) * 0.5f);
                 
         float cPosX = initPosX;
