@@ -26,7 +26,7 @@ public class FieldsGenerator : MonoBehaviour {
         yield return new WaitForSeconds(secs);
         RenderWordField();
         yield return new WaitForSeconds(secs / 2f);
-        _timer = 45f;
+        _timer = 120f;
         _timerOn = true;
         FindObjectOfType<InteractWithLetter>().CanInteract = true;
         yield return null;
@@ -39,7 +39,6 @@ public class FieldsGenerator : MonoBehaviour {
 
     private void Start() {
         PlayerPrefs.SetInt("score", 0);
-        StartCoroutine(RestartGameTemp(0.5f));
     }
 
     private void Update() {
@@ -83,7 +82,7 @@ public class FieldsGenerator : MonoBehaviour {
         string currentWord = currentItem.TextSeq;
         int wordLength = currentWord.Length;
         _wordPoints = currentItem.Points;
-        
+
         float positionDelta = 0.1f;
         float letterSize = 3.3f / wordLength;
         float initPosX = -((int)(wordLength / 2 - (1 - wordLength % 2)) * (letterSize + positionDelta) + (1 - wordLength % 2) * (letterSize + positionDelta) * 0.5f);
@@ -168,5 +167,24 @@ public class FieldsGenerator : MonoBehaviour {
         }
         TextScore.text = "SCORE: " + currentPoints;
         PlayerPrefs.SetInt("score", currentPoints);
+    }
+
+    public void ChangeTimer(float secs = 0f) {
+        if (_timer + secs <= 0) {return;}
+        _timer += secs;
+    }
+
+    public void RestartGame() {
+        StartCoroutine(RestartGameTemp(0.5f));
+    }
+     public void ExitGame() {
+        PlayerPrefs.SetInt("score", 0);
+        _timerOn = false;
+        FindObjectOfType<InteractWithLetter>().CanInteract = false;
+
+        WordLetters.Clear();
+        LetterElement[] lettersObjs = GameObject.FindObjectsOfType<LetterElement>();
+        foreach (LetterElement obj in lettersObjs) {Destroy(obj.gameObject);}
+        FindObjectOfType<InteractWithLetter>().ClearSelectedLetters();
     }
 }

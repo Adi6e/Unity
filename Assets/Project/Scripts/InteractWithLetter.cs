@@ -31,15 +31,19 @@ public class InteractWithLetter : MonoBehaviour {
     }
 
     public void CheckSelectedPair() {
+        AudioController audioController = GameObject.FindObjectOfType<AudioController>();
         if (_selectedLetters.Count != 2) {return;}
         if (_selectedLetters[0].GetValue() == _selectedLetters[1].GetValue()) {
             string foundLetter = _selectedLetters[0].GetValue();
             _selectedLetters[0].DestroyCellHandler();
             _selectedLetters[1].DestroyCellHandler();
             _fieldsGenerator.CheckOpenedLetter(foundLetter);
+            audioController.ToggleSound("correct");
         } else {
             _selectedLetters[0].ToggleCellHandler(false);
             _selectedLetters[1].ToggleCellHandler(false);
+            _fieldsGenerator.ChangeTimer(-3f);
+            audioController.ToggleSound("incorrect");
         }
         _selectedLetters.Clear();
     }
