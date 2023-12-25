@@ -8,8 +8,11 @@ public class InteractWithLetter : MonoBehaviour {
     private Vector3 _touchPosWorld;
     public bool CanInteract = true;
 
+    public AudioController audioController;
+
     private void Awake() {
-        _fieldsGenerator = FindObjectOfType<FieldsGenerator>();
+        // _fieldsGenerator = FindObjectOfType<FieldsGenerator>();
+        _fieldsGenerator = gameObject.GetComponent<FieldsGenerator>();
         _selectedLetters = new List<LetterElement>();
     }
 
@@ -31,7 +34,7 @@ public class InteractWithLetter : MonoBehaviour {
     }
 
     public void CheckSelectedPair() {
-        AudioController audioController = GameObject.FindObjectOfType<AudioController>();
+        // AudioController audioController = GameObject.FindObjectOfType<AudioController>();
         if (_selectedLetters.Count != 2) {return;}
         if (_selectedLetters[0].GetValue() == _selectedLetters[1].GetValue()) {
             string foundLetter = _selectedLetters[0].GetValue();

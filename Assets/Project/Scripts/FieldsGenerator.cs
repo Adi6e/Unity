@@ -16,25 +16,34 @@ public class FieldsGenerator : MonoBehaviour {
     public Image WordObjImg;
     public Text TextScore, TextScoreBest, TextTimer;
 
+
+    private InteractWithLetter _interactWithLetter;
+    public Transform LetterElementParent;
+
+
     private IEnumerator RestartGameTemp(float secs = 0f) {
         _timerOn = false;
         TextTimer.text = "--";
         TextTimer.color = new Color32(255, 255, 255, 255);
         TextScore.text = "SCORE: " + PlayerPrefs.GetInt("score", 0);
         TextScoreBest.text = "BEST: " + PlayerPrefs.GetInt("score_best", 0);
-        FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        _interactWithLetter.CanInteract = false;
         yield return new WaitForSeconds(secs);
         RenderWordField();
         yield return new WaitForSeconds(secs / 2f);
         _timer = 120f;
         _timerOn = true;
-        FindObjectOfType<InteractWithLetter>().CanInteract = true;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = true;
+        _interactWithLetter.CanInteract = true;
         yield return null;
     }
 
     private void Awake() {
-        _letterElementParent = FindObjectOfType<LetterElementParent>().transform;
+        // _letterElementParent = FindObjectOfType<LetterElementParent>().transform;
         WordLetters = new List<LetterElement>();
+
+        _interactWithLetter = gameObject.GetComponent<InteractWithLetter>();
     }
 
     private void Start() {
@@ -65,7 +74,8 @@ public class FieldsGenerator : MonoBehaviour {
         WordLetters.Clear();
         LetterElement[] lettersObjs = GameObject.FindObjectsOfType<LetterElement>();
         foreach (LetterElement obj in lettersObjs) {Destroy(obj.gameObject);}
-        FindObjectOfType<InteractWithLetter>().ClearSelectedLetters();
+        // FindObjectOfType<InteractWithLetter>().ClearSelectedLetters();
+        _interactWithLetter.ClearSelectedLetters();
 
         string langType = "en";
         List<int> savedInds = new List<int>();
@@ -90,7 +100,8 @@ public class FieldsGenerator : MonoBehaviour {
         float cPosX = initPosX;
         for (int i = 0; i < wordLength; i++) {
             var letter = Instantiate(LetterElement, new Vector3(cPosX, WordPanel.transform.position.y, -2f), Quaternion.identity);
-            letter.transform.parent = _letterElementParent.GetChild(0);
+            // letter.transform.parent = _letterElementParent.GetChild(0);
+            letter.transform.parent = LetterElementParent.GetChild(0);
             letter.transform.localScale = new Vector3(letterSize, letterSize, 0.2f);
             letter.GetComponent<LetterElement>().SetValue(currentWord[i] + "");
             WordLetters.Add(letter.GetComponent<LetterElement>());
@@ -136,7 +147,8 @@ public class FieldsGenerator : MonoBehaviour {
             for (int j = 0; j < 4; j++) {
                 float posXDelta = j * positionDelta + initPos.x;
                 var letter = Instantiate(LetterElement, new Vector3(LettersPanel.transform.position.x + posXDelta, LettersPanel.transform.position.y + posYDelta, -2f), Quaternion.identity);
-                letter.transform.parent = _letterElementParent.GetChild(1);
+                // letter.transform.parent = _letterElementParent.GetChild(1);
+                letter.transform.parent = LetterElementParent.GetChild(1);
                 letter.transform.localScale = new Vector3(letterSize, letterSize, 0.2f);
                 letter.GetComponent<LetterElement>().SetValue(letters[i * 4 + j] + "");
                 letter.GetComponent<LetterElement>().SetInteractableOption();
@@ -180,11 +192,13 @@ public class FieldsGenerator : MonoBehaviour {
      public void ExitGame() {
         PlayerPrefs.SetInt("score", 0);
         _timerOn = false;
-        FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        _interactWithLetter.CanInteract = false;
 
         WordLetters.Clear();
         LetterElement[] lettersObjs = GameObject.FindObjectsOfType<LetterElement>();
         foreach (LetterElement obj in lettersObjs) {Destroy(obj.gameObject);}
-        FindObjectOfType<InteractWithLetter>().ClearSelectedLetters();
+        // FindObjectOfType<InteractWithLetter>().ClearSelectedLetters();
+        _interactWithLetter.ClearSelectedLetters();
     }
 }

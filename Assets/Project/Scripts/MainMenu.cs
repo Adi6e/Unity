@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
     public Button BtnMusic, BtnSound;
 
+    public AudioController audioController;
+    public FieldsGenerator fieldsGenerator;
+
     private void Start() {
         ToggleGameSettings();
     }
@@ -18,18 +21,18 @@ public class MainMenu : MonoBehaviour {
         Image soundImageCancel = BtnSound.transform.GetChild(1).GetComponent<Image>();
         musicImageCancel.gameObject.SetActive(music == 0);
         soundImageCancel.gameObject.SetActive(sound == 0);
-        AudioController audioController = GameObject.FindObjectOfType<AudioController>();
+        // AudioController audioController = GameObject.FindObjectOfType<AudioController>();
         audioController.ToggleMusic();
     }
 
     public void OnButtonStartClicked() {
         gameObject.SetActive(false);
-        FieldsGenerator fieldsGenerator = GameObject.FindObjectOfType<FieldsGenerator>();
+        // FieldsGenerator fieldsGenerator = GameObject.FindObjectOfType<FieldsGenerator>();
         fieldsGenerator.RestartGame();
     }
     public void OnButtonMenuClicked() {
         gameObject.SetActive(true);
-        FieldsGenerator fieldsGenerator = GameObject.FindObjectOfType<FieldsGenerator>();
+        // FieldsGenerator fieldsGenerator = GameObject.FindObjectOfType<FieldsGenerator>();
         fieldsGenerator.ExitGame();
 
     }

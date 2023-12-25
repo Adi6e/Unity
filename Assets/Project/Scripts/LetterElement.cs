@@ -11,28 +11,35 @@ public class LetterElement : MonoBehaviour {
     private TMP_Text _textMesh;
     private Animation _animation;
 
+    public InteractWithLetter _interactWithLetter;
+
     private IEnumerator ToggleCell(bool toOpen) {
         _interactable = false;
-        FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        _interactWithLetter.CanInteract = false;
         string clipName = toOpen ? "element_opening-2" : "element_closing-2";
         _animation.Play(clipName);
         while (_animation.isPlaying) {
             yield return null;
         }
         _interactable = true;
-        FindObjectOfType<InteractWithLetter>().CanInteract = true;
-        FindObjectOfType<InteractWithLetter>().CheckSelectedPair();
+        // FindObjectOfType<InteractWithLetter>().CanInteract = true;
+        // FindObjectOfType<InteractWithLetter>().CheckSelectedPair();
+        _interactWithLetter.CanInteract = true;
+        _interactWithLetter.CheckSelectedPair();
         _opened = toOpen;
         yield return null;
     }
 
     private IEnumerator DestroyCell() {
-        FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = false;
+        _interactWithLetter.CanInteract = false;
         _animation.Play("element_destroying");
         while (_animation.isPlaying) {
             yield return null;
         }
-        FindObjectOfType<InteractWithLetter>().CanInteract = true;
+        // FindObjectOfType<InteractWithLetter>().CanInteract = true;
+        _interactWithLetter.CanInteract = true;
         Destroy(gameObject);
         yield return null;
     }
@@ -40,6 +47,8 @@ public class LetterElement : MonoBehaviour {
     private void Awake() {
         _textMesh = GetComponentInChildren<TMP_Text>();
         _animation = GetComponent<Animation>();
+
+        _interactWithLetter = FindObjectOfType<InteractWithLetter>();
     }
 
     public void SetValue(string value = "-") {
@@ -73,5 +82,4 @@ public class LetterElement : MonoBehaviour {
     public void DestroyCellHandler() {
         StartCoroutine(DestroyCell());
     }
-
 }
